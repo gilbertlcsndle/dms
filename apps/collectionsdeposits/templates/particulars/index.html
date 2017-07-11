@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Particulars
+{% endblock title %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="content">
+          <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-fill">
+              Save
+              {% if is_edit %}
+                changes
+              {% endif %}
+            </button>
+            {% if is_edit %}
+              <div class="pull-right">
+                <a href="{% url 'collectionsdeposits:particulars' %}" 
+                  class="btn btn-danger btn-fill">
+                  Cancel
+                </a>
+              </div>
+            {% endif %}
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="content">
+          <table class="table" id="particulars">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for particular in object_list %} 
+              <tr>
+                <td>{{ particular.name }}</td>
+                <td>{{ particular.amount }}</td>
+                <td>
+                  <form 
+                    action="{% url 'collectionsdeposits:particulars-delete' particular.pk %}" 
+                    method="post">
+                    {% csrf_token %}
+                    <a href="{% url 'collectionsdeposits:particulars-edit' particular.pk %}" 
+                      class="btn-link text-default" title="Edit">
+                      <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                    
+                    <button type="submit" 
+                      class="btn-link text-default confirm-delete" title="Delete">
+                      <span class="glyphicon glyphicon-trash">
+                        
+                      </span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block js %}
+  <script>
+  $(function(){
+      datatable_default.aoColumnDefs = [
+          {
+              'bSortable': false,
+              'aTargets': [2],
+          }
+      ]
+      
+      $('#particulars').DataTable(datatable_default);
+  });
+  </script>
+{% endblock js %}

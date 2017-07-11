@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card card-info">
+        <div class="content">
+          {% block card_info %}
+            
+          {% endblock card_info %}
+        </div>
+      </div>
+    </div>
+    <div class='col-sm-4'>
+      <div class="card card-user">
+        <div class="content">
+          <div class="author">
+            {% block author_photo %}
+              
+            {% endblock author_photo %}
+            <h4 class='title'>
+              {% block author_name %}
+                 
+              {% endblock author_name %} <br />
+              <small>
+                {% block author_username %}
+
+                {% endblock author_username %}
+              </small>
+            </h4>
+          </div>
+          <p class="description text-center">
+            {% block description %}
+              
+            {% endblock description %}
+          </p>
+          <center>
+            {% block contact %}
+            
+            {% endblock contact %}
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

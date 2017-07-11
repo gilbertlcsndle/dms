@@ -1,0 +1,59 @@
+{% load static %}
+
+<div class="logo">
+  <a href="#" class="simple-text">
+    <img src="{% static "img/logo.png" %}" height="100" alt="Logo" />
+    <br />
+    DILI BAUANG, LA UNION
+  </a>
+</div>
+<ul class="nav" id="sidebar" data-current="{{ current_page }}">
+  <li>
+    <a href="{% url 'dashboard' %}">
+      <i class="pe-7s-graph"></i>
+      <p>Dashboard</p>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'officials:index' %}">
+      <i class="pe-7s-shield"></i>
+      <p>Officials</p>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'residents:index' %}">
+      <i class="pe-7s-users"></i>
+      <p>Residents</p>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'events:index' %}">
+      <i class="pe-7s-alarm"></i>
+      <p>Events</p>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'attendance:index' %}">
+      <i class="pe-7s-clock"></i>
+      <p>Attendance</p>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'certificates:index' %}">
+      <i class="pe-7s-note2"></i>
+      <p>Certificates</p>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'collectionsdeposits:index' %}">
+      <i class="pe-7s-piggy"></i>
+      <p>Collections</p>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'maps:index' %}">
+      <i class="pe-7s-map-marker"></i>
+      <p>Maps</p>
+    </a>
+  </li>
+</ul> 

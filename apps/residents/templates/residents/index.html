@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Residents 
+{% endblock title %}
+
+{% block css %}
+  {% load static %}
+{% endblock css %}
+
+{% block content %}
+<div class="card">
+  <div class="content">
+    <span class="add-btn" hidden>
+      <a href="{% url 'residents:add' %}" 
+        class="btn btn-primary btn-fill">
+        Add
+      </a>
+    </span>
+    <div class="clearfix"></div>
+           
+            
+    <table class="table" id="residents">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for resident in object_list %}
+        <tr>
+          <td>
+            {% if resident.photo %}
+              <img src="{{ resident.photo.url }}" alt="resident photo" 
+                width='50'/>
+            {% else %}
+              {% if resident.gender == 'm' %}
+                <img src="{% static "img/default/male.png" %}" 
+                  alt="resident photo" width='50'/>
+              {% else %}
+                <img src="{% static "img/default/female.png" %}" 
+                  alt="resident photo" width='50'/>
+              {% endif %}
+            {% endif %}
+          </td>
+          <td>{{ resident.lname }}, {{ resident.fname }} {{ resident.mname }}</td>
+          <td>{{ resident.age }}</td>
+          <td>{{ resident.get_gender_display }}</td>
+          <td>{{ resident.get_status_display }}</td>
+          <td>
+            <a href="{% url 'residents:edit' resident.pk %}" class="btn-link"
+              title="Edit">
+              <span class="glyphicon glyphicon-edit text-default"></span>
+            </a>
+            <a href="{% url 'residents:view' resident.pk %}" class="btn-link"
+              title="Profile">
+              <span class="glyphicon glyphicon-user text-default"></span>
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+  <script src="{% static "residents/js/main.js" %}"></script>
+{% endblock js %}

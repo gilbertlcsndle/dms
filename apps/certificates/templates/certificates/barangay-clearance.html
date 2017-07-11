@@ -1,0 +1,70 @@
+{% extends "certificates/base-cert.html" %}
+
+{% block body %}
+  <div class="display-table">
+    <div class="display-table-row">
+      <div class="display-table-cell text-center">
+        <b>
+          Office of the Punong Barangay
+        </b>
+      </div>
+    </div>
+    <div class="display-table-row">
+      <div class="display-table-cell text-center">
+        <b>BARANGAY CLEARANCE</b>
+      </div>
+    </div>
+    <div class="display-table-row">
+      <div class="display-table-cell">
+        NAME: <span contenteditable="true"></span> <br />
+        ADDRESS: <span contenteditable="true"></span> <br />
+        AGE: <span contenteditable="true"></span> 
+        SEX: <span contenteditable="true"></span> 
+        CIVIL STATUS: <span contenteditable="true"></span>
+      </div>
+    </div>
+    <div class="display-table-row">
+      <div class="display-table-cell">To whom it may concern:</div>
+    </div>
+    <div class="display-table-row">
+      <div class="display-table-cell">
+        <p>
+          This is to certify that the above named person whose signature and 
+          thumb marks below is a bonafide resident of this barangay.
+        </p>
+        <p>
+          It is Further certified that he/she is a law abiding citizen and not
+          known to be a member of any subversive organization nor a fugitive from
+          justice and has no pending case filed against him/her as per records now
+          available in our barangay office as of his date.
+        </p>
+      </div>
+    </div>
+    <div class="display-table-row">
+      <div class="display-table-cell">
+        PURPOSE: <span contenteditable="true"></span> <br />
+        DATE: <span contenteditable="true"></span>
+      </div>
+    </div>
+  </div>
+  <div class="display-table" width='100%'>
+    <div class="display-table-row">
+      <div class="display-table-cell">
+        <div class="pull-left text-center" style="padding: 20px 0;">
+          <span contenteditable="true"></span> <br />
+          Signature
+        </div>
+        
+        <div class="clearfix"></div>
+        
+        C.T.C No. <span contenteditable="true"></span>  <br />
+        Issued at <span contenteditable="true"></span> <br />
+        On <span contenteditable="true"></span>
+      </div>
+      <div class="display-table-cell text-right valign-middle">
+        <b style="text-transform:uppercase">{{ punong_brgy }}</b> <br />
+        Punong Barangay
+      </div>
+    </div>
+  </div>
+{% endblock body %}

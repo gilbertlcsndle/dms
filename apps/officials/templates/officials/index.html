@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Officials
+{% endblock title %}
+
+{% block css %}
+  {% load static %}
+{% endblock css %}
+
+{% block content %}
+<div class="card">
+  <div class="content">
+    <span class="add-btn" hidden>
+      <a href="{% url 'officials:add' %}"
+        class="btn btn-primary btn-fill">
+        Add
+      </a></span>
+    <table class="table" id="officials" width="100%">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Position</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for official in object_list %}
+        <tr>
+          <td>
+            {% if official.resident.photo %}
+              <img src="{{ official.resident.photo.url }}" alt="official photo" 
+                width='50'/>
+            {% else %}
+              {% if official.resident.gender == 'm' %}
+                <img src="{% static "img/default/male.png" %}" 
+                  alt="official photo" width='50'/>
+              {% else %}
+                <img src="{% static "img/default/female.png" %}" 
+                  alt="official photo" width='50'/>
+              {% endif %}
+            {% endif %}
+          </td>
+          <td>{{ official.user }}</td>
+          <td>{{ official.resident.lname }}, {{ official.resident.fname }} {{ official.resident.mname }}</td>
+          <td>{{ official.age }}</td>
+          <td>{{ official.resident.get_gender_display }}</td>
+          <td>{{ official.get_position_display }}</td>
+          <td>
+            {% if official.user.is_active %}
+              Active
+            {% else %}
+              Not active
+            {% endif %}
+          </td>
+          <td>
+            <form action="" method="post">{% csrf_token %}
+              <a href="{% url 'officials:edit' official.pk %}"
+                class="btn-link" title="Edit">
+                <span class="glyphicon glyphicon-edit text-default"></span>
+              </a>
+              <input type="hidden" name="pk" value="{{ official.pk }}" />
+              {% if official.user.is_active %}
+              <button type="submit" class="btn-link" 
+                title="Deactivate">
+                <span class="glyphicon glyphicon-remove-circle text-default"></span>
+              </button>
+              {% else %}
+              <button type="submit" class="btn-link" 
+                title="Activate">
+                <span class="glyphicon glyphicon-ok-circle text-default"></span>
+              </button>
+              {% endif %}
+
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+  <script src="{% static "officials/js/main.js" %}"></script>
+{% endblock js %}

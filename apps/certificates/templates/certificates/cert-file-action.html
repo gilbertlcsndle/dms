@@ -1,0 +1,70 @@
+{% extends "certificates/base-cert.html" %}
+
+{% block body %}
+  <div class="display-table">
+    <div class="display-table-row">
+      <div class="display-table-cell text-center">
+        <b>
+          Office of the Lupong Tagapamayapa
+        </b>
+      </div>
+    </div>
+    <div class="display-table-row">
+      <div class="display-table-cell text-right">
+        Barangay Case No. <span contenteditable="true"></span> <br />
+        For: <span contenteditable="true"></span>
+      </div>
+    </div>
+    <div class="display-table-row">
+      <div class="display-table-cell pull-left text-center">
+        <span contenteditable="true"></span> <br />
+        Complainant/s <br />
+        -against- <br />
+        <span contenteditable="true"></span> <br />
+        Respondent/s
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="display-table-row">
+      <div class="display-table-cell text-center">
+        <b>CERTIFICATE TO FILE ACTION</b>
+      </div>
+    </div>
+    <div class="display-table-row">
+      <div class="display-table-cell">
+        This is to certify that:
+        <ol style='line-height: 2.5;'>
+          <li>
+            Respondent did not appeared for consecutive hearing and
+            no confrontation made.
+          </li>
+          <li>
+            Another hearing was set on and respondent did not appeared again.
+          </li>
+          <li>
+            Therefore, the above case may now be filed at 
+            proper court/government office.
+          </li>
+        </ol>
+        This <span contenteditable="true">{% now "jS" %}</span> day of 
+        <span contenteditable="true">{% now "F" %}</span>, 
+        <span contenteditable="true">{% now "Y" %}</span>.
+      </div>
+    </div>
+    <div class="display-table-row">
+      <div class="display-table-cell pull-right text-center">
+        <span contenteditable="true"></span> <br />
+        Pangkat Secretary
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="display-table-row">
+      <div class="display-table-cell">
+        Attested by: <br />
+        <span contenteditable="true"></span> <br />
+        Pangkat Chairman
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+{% endblock body %}

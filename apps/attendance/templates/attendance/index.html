@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Attendance
+{% endblock title %}
+
+{% block css %}
+  {% load static %}
+{% endblock css %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="content">
+          <form action="" method="post">{% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-group">
+              {{ form.resident.label_tag }}
+              {{ form.resident }}
+              {{ form.resident.errors }}
+            </div>
+            <div class="form-group">
+              {{ form.event.label_tag }}
+              {{ form.event }}
+              {{ form.event.errors }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-fill">Save</button>
+          </form>
+        </div>
+      </div>
+      <select id="type" hidden>
+        <option value="">Officials</option>
+        <option value="residents"
+        {% if request.GET.type == 'residents' %}
+          selected
+        {% endif %}
+        >Residents</option>
+      </select>
+    </div>
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="content">
+          <table class="table" id="events" width="100%">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Event</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for attendance in object_list %}
+              <tr>
+                <td> 
+                  {{ attendance.resident.lname }}, 
+                  {{ attendance.resident.fname }}
+                  {{ attendance.resident.mname }}
+                </td>
+                <td>{{ attendance.date_attended | date:"F d, Y" }}</td>
+                <td>{{ attendance.time_attended | time:"h:i A" }}</td>
+                <td>{{ attendance.event }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block js %}
+  <script src="{% static "components/jQuery.print/jQuery.print.js" %}"></script>
+  <script src="{% static "attendance/js/main.js" %}"></script>
+{% endblock js %}

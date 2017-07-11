@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if not is_edit %}
+    Add resident
+  {% else %}
+    Update profile
+  {% endif %}
+{% endblock title %}
+
+{% block content %}
+  <div class="card">
+    <div class="content">
+      <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.non_field_errors }}
+          <h4>Personal information</h4>
+          <div class="form-group">
+            {{ form.photo.label_tag }}
+            {{ form.photo }}
+            {{ form.photo.errors }}
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              {{ form.fname.label_tag }}
+              {{ form.fname }}
+              {{ form.fname.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.mname.label_tag }}
+              {{ form.mname }}
+              {{ form.mname.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.lname.label_tag }}
+              {{ form.lname }}
+              {{ form.lname.errors }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              {{ form.bdate.label_tag }}
+              {{ form.bdate }}
+              {{ form.bdate.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.gender.label_tag }}
+              {{ form.gender }}
+              {{ form.gender.errors }}
+            </div>
+            <div class="col-sm-4" data-url="{% url 'residents:names' %}">
+              {{ form.spouse.label_tag }}
+              {{ form.spouse }}
+              {{ form.spouse.errors }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              {{ form.children.label_tag }}
+              {{ form.children }}
+              {{ form.children.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.civil_status.label_tag }}
+              {{ form.civil_status }}
+              {{ form.civil_status.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.occupation.label_tag }}
+              {{ form.occupation }}
+              {{ form.occupation.errors }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              {{ form.educational_attainment.label_tag }}
+              {{ form.educational_attainment }}
+              {{ form.educational_attainment.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.status.label_tag }}
+              {{ form.status }}
+              {{ form.status.errors }}
+            </div>
+          </div>
+          <h4>Contact information</h4>
+          <div class="row">
+            <div class="col-sm-4">
+              {{ form.address.label_tag }}
+              {{ form.address }}
+              {{ form.address.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.phone_number.label_tag }}
+              {{ form.phone_number }}
+              {{ form.phone_number.errors }}
+            </div>
+          </div>
+          <h4>Household information</h4>
+          <div class="row">
+            <div class="col-sm-4">
+              {{ form.common_garbage_disposal.label_tag }}
+              {{ form.common_garbage_disposal }}
+              {{ form.common_garbage_disposal.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.source_of_water_supply.label_tag }}
+              {{ form.source_of_water_supply }}
+              {{ form.source_of_water_supply.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.toilet_type.label_tag }}
+              {{ form.toilet_type }}
+              {{ form.toilet_type.errors }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              {{ form.common_agri_products.label_tag }}
+              {{ form.common_agri_products }}
+              {{ form.common_agri_products.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.kinds_of_animals.label_tag }}
+              {{ form.kinds_of_animals }}
+              {{ form.kinds_of_animals.errors }}
+            </div>
+            <div class="col-sm-4">
+              {{ form.type_of_dwelling_unit.label_tag }}
+              {{ form.type_of_dwelling_unit }}
+              {{ form.type_of_dwelling_unit.errors }}
+            </div>
+          </div>
+        <button type="submit" class="btn btn-primary btn-fill btn-wd pull-right">
+        {% if not is_edit %}
+          Save
+        {% else %}
+          Save changes
+        {% endif %}
+        </button>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block js %}
+  {% load static %}
+  <script src="{% static "residents/js/main.js" %}"></script>
+{% endblock js %}

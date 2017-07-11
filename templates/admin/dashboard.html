@@ -1,0 +1,120 @@
+  {% extends "base.html" %}  
+
+{% block title %}
+  Dashboard
+{% endblock title %}
+
+{% block css %}
+  {% load static %}
+  
+  <link rel="stylesheet" href="{% static "components/fullcalendar/dist/fullcalendar.min.css" %}" />
+  <style>
+    #statistics i{
+        font-size: 25px;
+    }
+  </style>
+{% endblock css %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Statistics</h4>
+        </div>
+        <div class="content">
+          <div class="table-responsive">
+            <table class="table" id="statistics">
+              <tr>
+                <td>
+                  <i class="pe-7s-users"></i>
+                </td>
+                <td>Residents</td>
+                <td class="text-right">{{ total_residents }}</td>
+              </tr>
+              <tr>
+                <td>
+                  <i class="pe-7s-piggy"></i>
+                </td>
+                <td>Collections</td>
+                <td class="text-right">{{ total_collections }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      {% if user.official.position in position_keys|slice:':2' or user.is_superuser %}
+        <div class="card">
+          <div class="content text-center">
+            <div id="files-url" data-add="{% url 'files-add' %}" 
+              data-success="{% url 'dashboard' %}" hidden></div>
+            {% csrf_token %}
+            {{ file_form.file }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="col-sm-8">
+      <div class="card" id="calendar_container">
+        <div class="header">
+          <h4 class="title">Events</h4>
+        </div>
+        <div class="content">
+          <div id="calendar" data-events="{{ all_events }}" data-url='{% url 'event-list' %}'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="header">
+      <h4 class="title">Files</h4>
+    </div>
+    <div class="content">
+      <table class="table" id="files" width="100%">
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Size</th>
+            <th>Uploaded</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            <tr>
+            <td>
+              {{ object }}
+            </td>
+            <td>
+              {{ object.file.size|filesizeformat }}
+            </td>
+            <td>
+              {{ object.date_uploaded }}
+            </td>
+            <td>
+              <form action="{% url 'files-delete' object.pk %}" method="post" id="delete">
+                {% csrf_token %}
+                <a href="{{ object.file.url }}" class="btn-link text-default" 
+                  title="Download" download>
+                  <span class="glyphicon glyphicon-download"></span>
+                </a>
+                <button type="button" title="Delete" 
+                  class="btn-link text-default confirm-delete">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %} 
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block js %}
+  <script src="{% static "components/fullcalendar/dist/fullcalendar.min.js" %}"></script>
+  <script src="{% static "js/dashboard.js" %}"></script>
+
+{% endblock js %}

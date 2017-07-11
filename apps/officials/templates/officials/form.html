@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Add official
+{% endblock title %}
+
+{% block css %}
+  {% load static %}
+{% endblock css %}
+
+{% block content %}
+  <div class="card">
+    <div class="content">
+      <form action="" method="post">{% csrf_token %}
+        <div class="row">
+          <div class="col-sm-6">
+            <h4>Basic information</h4>
+            {{ official_form.non_field_errors }}
+            <p data-url="{% url 'residents:names' %}">
+              {{ official_form.resident.label_tag }}
+              {{ official_form.resident }}
+              {{ official_form.resident.errors }}
+            </p>
+            <p>
+              {{ official_form.position.label_tag }}
+              {{ official_form.position }}
+              {{ official_form.position.errors }}
+            </p>
+          </div>
+          <div class="col-sm-6">
+            <h4>Account information</h4>
+            {{ user_form.non_field_errors }}
+            {{ usernameupdateform.non_field_errors }}
+
+            {{ usernameupdateform.as_p }}
+            {% for user_field in user_form %}
+              <p>
+                {{ user_field.label_tag }}
+                {{ user_field }}
+                {{ user_field.errors }}
+              </p>
+            {% endfor %}
+          </div>
+        </div>
+        <h4>Security information</h4>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              {{ official_form.question1.label_tag }}
+              {{ official_form.question1 }}
+              {{ official_form.question1.errors }}
+            </div>
+            <div class="form-group">
+              {{ official_form.answer1.label_tag }}
+              {{ official_form.answer1 }}
+              {{ official_form.answer1.errors }}
+            </div>
+            <div class="form-group">
+              {{ official_form.question2.label_tag }}
+              {{ official_form.question2 }}
+              {{ official_form.question2.errors }}
+            </div>
+            <div class="form-group">
+              {{ official_form.answer2.label_tag }}
+              {{ official_form.answer2 }}
+              {{ official_form.answer2.errors }}
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              {{ official_form.question3.label_tag }}
+              {{ official_form.question3 }}
+              {{ official_form.question3.errors }}
+            </div>
+            <div class="form-group">
+              {{ official_form.answer3.label_tag }}
+              {{ official_form.answer3 }}
+              {{ official_form.answer3.errors }}
+            </div>
+          </div>
+        </div>
+        <button type="submit" 
+        class="btn btn-primary btn-wd btn-fill pull-right">
+        {% if not is_edit %}
+          Save
+        {% else %}
+          Save changes
+        {% endif %}
+        </button>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block js %}
+  <script src="{% static "officials/js/main.js" %}"></script>
+{% endblock js %}

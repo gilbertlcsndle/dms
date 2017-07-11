@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Certificates
+{% endblock title %}
+
+{% block content %}
+  <div class="card card-plain" style="margin-bottom: 0;">
+    <div class="content" style="padding-left: 0; padding-right: 0;">
+      <div class="row">
+        <div class="col-sm-6">
+          <select name="" id="select-cert">
+            <option value="">Choose here</option>
+            <option value="cert-ownership.html">Certificate of Ownership</option>
+            <option value="cert-indigency-school.html">Certificate of Indigency - for school purposes</option>
+            <option value="cert-file-action.html">Certificate to file action</option>
+            <option value="cert-indigency-special.html">Certificate of Indigency - for special purposes</option>
+            <option value="barangay-clearance.html">Barangay clearance</option>
+            <!-- <option value="cert-6.html">Certificate 6</option> -->
+            <option value="cert-electrical.html">Certificate of Electrical Connection</option>
+            <!-- <option value="cert-8.html">Certificate 8</option> -->
+          </select>
+        </div>
+        <div class="col-sm-6 text-right">
+          <button class="btn btn-primary btn-fill btn-wd" id="print" disabled>
+            <span class="glyphicon glyphicon-print"></span>
+            Print
+          </button>
+          <button class="btn btn-default btn-fill" id="clear-text" disabled>
+            Clear text
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="content">
+      <div class="well well-lg text-center" id="no-cert">
+        No certificates to display
+      </div>
+      <div id="certificate" style="margin: 0 1.5cm">
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block js %}
+  {% load static %}
+
+  <script src="{% static "components/jQuery.print/jQuery.print.js" %}"></script>
+  <script src="{% static "certificates/js/main.js" %}"></script>
+{% endblock js %}

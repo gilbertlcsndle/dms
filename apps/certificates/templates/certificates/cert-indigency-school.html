@@ -1,0 +1,46 @@
+{% extends "certificates/base-cert.html" %}
+
+{% block body %}
+  <div class="display-table">
+    <div class="display-table-row">
+      <div class="display-table-cell text-center">
+        <b>Office of the Punong Barangay</b>
+      </div>
+    </div>
+    
+    <div class="display-table-row">
+      <div class="display-table-cell text-center">
+        <b>CERTIFICATION</b>
+      </div>
+    </div>
+    
+    <div class="display-table-row">
+      <div class="display-table-cell">
+        To whom it may concern:
+        <p>
+          This is to certify that <span contenteditable="true"></span> 
+          single/married of legal age , is the son/daughter of 
+          <span contenteditable="true"></span> The family is registered resident of 
+          Barangay Dili, Bauang La Union.
+        </p>
+    
+        <p>
+          This certifies further that the family is of the low-income group and/or 
+          the indigents.
+        </p>
+        <p>
+          This certification is being issued for school requirement puposes this 
+          <span contenteditable="true"></span> day of 
+          <span contenteditable="true"></span> , 2017.
+        </p>
+      </div>
+    </div>
+    
+    <div class="display-table-row">
+      <div class="display-table-cell" style="text-align: right;">
+        <b style='text-transform: uppercase'>{{ punong_brgy }}</b><br />
+        Punong Barangay
+      </div>
+    </div>
+  </div>
+{% endblock body %}

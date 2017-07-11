@@ -1,0 +1,53 @@
+{% extends "certificates/base-cert.html" %}
+
+{% block body %}
+  <div class="display-table">
+    <div class="display-table-row">
+      <div class="display-table-cell text-center">
+        <b>Office of the Punong Barangay</b>
+      </div>
+    </div>
+    
+    <div class="display-table-row">
+      <div class="display-table-cell text-center">
+        <b>CERTIFICATION</b>
+      </div>
+    </div>
+    
+    <div class="display-table-row">
+      <div class="display-table-cell">
+        To whom it may concern:
+      </div>
+    </div>
+    
+    <div class="display-table-row">
+      <div class="display-table-cell">
+        <p>
+          This is to certify that Mr./Mrs. <span contenteditable="true"></span>, 
+          <span contenteditable="true"></span> years of age, single/married, 
+          is a registered resident of Barangay Dili Bauang La Union, 
+          His/Her house is located <span contenteditable="true"></span>.
+        </p>
+    
+        <p>
+          This certification is issued upon his/her request for electrical 
+          connection purposes.
+        </p>
+        
+        <p>
+          Given this <span contenteditable="true"></span> day of 
+          <span contenteditable="true"></span>, <span contenteditable="true"></span> 
+          at Barangay Dili, Bauang, La Union.
+        </p>
+      </div>
+    </div>
+    
+    <div class="display-table-row">
+      <div class="display-table-cell" style="text-align: right;">
+        <b style='text-transform: uppercase;'>{{ punong_brgy }}</b><br />
+        Punong Barangay
+      </div>
+    </div>
+  </div>
+{% endblock body %}
+    
