@@ -3,7 +3,6 @@ tmp/*
 !tmp/.keep
 __pycache__/
 *.pyc
-connect.cnf
 etc/*
 !etc/.keep
 media/*
