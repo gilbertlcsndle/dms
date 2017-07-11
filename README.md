@@ -23,7 +23,7 @@ Then run this command on your command prompt to install Bower.
 npm install -g bower
 ```
 
-* Then run the following commands to clone the project and to install it's dependencies.
+* Clone the project and to install it's dependencies.
 
 ```
 mkdir code
@@ -31,6 +31,15 @@ cd code
 git clone https://github.com/gilbertlcsndle/dms.git
 pip install tmp/requirements.txt
 bower install
+```
+
+* Open the XAMPP and start Apache and MySQL.
+
+* Then apply the migration to the database and create a superuser.
+
+```
+python manage.py migrate
+python manage.py createsuperuser
 ```
 
 ### Usage
@@ -43,7 +52,7 @@ bower install
 cd code\dms
 ```
 
-* And run this command.
+* Then run the server.
 
 ```
 python manage.py runserver
