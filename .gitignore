@@ -10,3 +10,4 @@ media/*
 static/CACHE
 static/components/*
 !static/components/.keep
+README.html
