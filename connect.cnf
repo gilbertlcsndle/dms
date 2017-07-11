@@ -1,0 +1,5 @@
+[client]
+database = dms
+user = root
+host = 127.0.0.1
+default-character-set = utf8

@@ -1,7 +1,13 @@
 tmp/*
+!tmp/requirements.txt
 !tmp/.keep
 __pycache__/
 *.pyc
-connect.cnf
 etc/*
 !etc/.keep
+media/*
+!media/.keep
+static/CACHE
+static/components/*
+!static/components/.keep
+README.html
