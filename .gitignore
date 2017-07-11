@@ -1,4 +1,5 @@
 tmp/*
+!tmp/requirements.txt
 !tmp/.keep
 __pycache__/
 *.pyc
