@@ -5,3 +5,8 @@ __pycache__/
 connect.cnf
 etc/*
 !etc/.keep
+media/*
+!media/.keep
+static/CACHE
+static/components/*
+!static/components/.keep
