@@ -12,51 +12,32 @@ Get the latest version of the following:
 
 * Install Python at https://www.python.org/downloads/ or with your operating system’s package manager.
 
+* Download [get-pip.py](https://bootstrap.pypa.io/get-pip.py) to a folder on your computer. Open a command prompt window and navigate to the folder containing `get-pip.py`. Then run `python get-pip.py`. This will install pip.
+
 * Install XAMPP at https://www.apachefriends.org/download.html.
 
 * Install Git at https://git-scm.com/downloads or with your operating system’s package manager.
 
 * Install Node at https://nodejs.org/en/.
-Then run this command on your command prompt to install Bower.
+Then run this command on your command prompt to install Bower `npm install -g bower`.
 
-```
-npm install -g bower
-```
+* Make a new folder and navigate to it using your command prompt.
 
-* Clone the project and to install it's dependencies.
-
-```
-mkdir code
-cd code
-git clone https://github.com/gilbertlcsndle/dms.git
-pip install tmp/requirements.txt
-bower install
-```
+* Then clone the project `git clone https://github.com/gilbertlcsndle/dms.git` and install it's dependencies `pip install tmp/requirements.txt && bower install`.
 
 * Open the XAMPP and start Apache and MySQL.
 
-* Then apply the migration to the database and create a superuser.
+* Go to localhost/phpmyadmin and create a database called 'dms'.
 
-```
-python manage.py migrate
-python manage.py createsuperuser
-```
+* Open your command prompt and apply the migration to the database `python manage.py migrate` and create a superuser `python manage.py createsuperuser`.
 
 ### Usage
 
 * Open the XAMPP and start Apache and MySQL.
 
-* By using your command prompt, cd to the directory where you clone the project.
+* By using your command prompt, go to the folder from where you clone the project `cd path/to/dms`.
 
-```
-cd code\dms
-```
-
-* Then run the server.
-
-```
-python manage.py runserver
-```
+* Then run the server `python manage.py runserver`.
 
 ## License
 
